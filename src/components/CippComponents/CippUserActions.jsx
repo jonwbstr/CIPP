@@ -131,7 +131,9 @@ const ManageLicensesForm = ({ formControl, tenant }) => {
             url: '/api/ListLicenses',
             labelField: (option) => option.displayName || option.skuPartNumber,
             valueField: 'skuId',
+            data: { IncludeExcluded: true },
             queryKey: `ListLicenses-${tenant}`,
+            showRefresh: true,
           }}
         />
       )}
@@ -149,7 +151,9 @@ const ManageLicensesForm = ({ formControl, tenant }) => {
             url: '/api/ListLicenses',
             labelField: (option) => option.displayName || option.skuPartNumber,
             valueField: 'skuId',
+            data: { IncludeExcluded: true },
             queryKey: `ListLicenses-${tenant}`,
+            showRefresh: true,
           }}
         />
       )}
@@ -170,7 +174,9 @@ const ManageLicensesForm = ({ formControl, tenant }) => {
                 option.availableUnits || 0
               } available)`,
             valueField: 'skuId',
+            data: { IncludeExcluded: true },
             queryKey: `ListLicenses-Available-${tenant}`,
+            showRefresh: true,
           }}
         />
       )}
@@ -418,7 +424,7 @@ export const useCippUserActions = () => {
     },
     {
       //tested
-      label: 'Create Temporary Access Password',
+      label: 'Create Temporary Access Pass',
       type: 'POST',
       icon: <Password />,
       url: '/api/ExecCreateTAP',
@@ -443,8 +449,9 @@ export const useCippUserActions = () => {
         },
       ],
       confirmText:
-        'Are you sure you want to create a Temporary Access Password for [userPrincipalName]?',
+        'Are you sure you want to create a Temporary Access Pass for [userPrincipalName]?',
       multiPost: false,
+      allowResubmit: true,
       condition: () => canWriteUser,
     },
     {

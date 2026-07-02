@@ -1,4 +1,10 @@
-import { BuildingOfficeIcon, HomeIcon, UsersIcon, WrenchIcon } from '@heroicons/react/24/outline'
+import {
+  BuildingOfficeIcon,
+  HomeIcon,
+  SparklesIcon,
+  UsersIcon,
+  WrenchIcon,
+} from '@heroicons/react/24/outline'
 import {
   CloudOutlined,
   HomeRepairService,
@@ -352,6 +358,11 @@ export const nativeMenuItems = [
             path: '/security/defender/list-defender-tvm',
             permissions: ['Security.Alert.*'],
           },
+          {
+            title: 'CVE Management',
+            path: '/security/defender/defender-cve-exceptions',
+            permissions: ['Security.Alert.*'],
+          },
         ],
       },
       {
@@ -366,6 +377,11 @@ export const nativeMenuItems = [
           {
             title: 'MDE Onboarding',
             path: '/security/reports/mde-onboarding',
+            permissions: ['Security.Defender.*'],
+          },
+          {
+            title: 'Vulnerability Report',
+            path: '/security/reports/cve-report',
             permissions: ['Security.Defender.*'],
           },
         ],
@@ -445,6 +461,60 @@ export const nativeMenuItems = [
     ],
   },
   {
+    title: 'Copilot & AI',
+    type: 'header',
+    icon: (
+      <SvgIcon>
+        <SparklesIcon />
+      </SvgIcon>
+    ),
+    permissions: ['Tenant.Standards.*'],
+    items: [
+      {
+        title: 'Shadow AI Discovery',
+        path: '/copilot/shadow-ai',
+        permissions: ['Tenant.Standards.*'],
+      },
+      {
+        title: 'Copilot Settings',
+        path: '/copilot/settings',
+        permissions: ['Tenant.Standards.*'],
+      },
+      {
+        title: 'Agent365',
+        permissions: ['Tenant.Standards.*'],
+        items: [
+          {
+            title: 'Packages',
+            path: '/copilot/agent365/packages',
+            permissions: ['Tenant.Standards.*'],
+          },
+        ],
+      },
+      {
+        title: 'Reports',
+        permissions: ['Tenant.Standards.*'],
+        items: [
+          {
+            title: 'Copilot Adoption',
+            path: '/copilot/reports/copilot-adoption',
+            permissions: ['Tenant.Standards.*'],
+          },
+          {
+            title: 'Copilot Usage Trend',
+            path: '/copilot/reports/copilot-trend',
+            permissions: ['Tenant.Standards.*'],
+          },
+          {
+            title: 'Copilot User Activity',
+            path: '/copilot/reports/copilot-usage',
+            permissions: ['Tenant.Standards.*'],
+          },
+        ],
+      },
+    ],
+  },
+  {
     title: 'Intune',
     type: 'header',
     icon: (
@@ -478,11 +548,12 @@ export const nativeMenuItems = [
             title: 'Application Templates',
             path: '/endpoint/applications/templates',
             permissions: ['Endpoint.Application.*'],
+            scope: 'global',
           },
         ],
       },
       {
-        title: 'Autopilot',
+        title: 'Autopilot & Enrollment',
         permissions: ['Endpoint.Autopilot.*'],
         items: [
           {
@@ -496,8 +567,8 @@ export const nativeMenuItems = [
             permissions: ['Endpoint.Autopilot.*'],
           },
           {
-            title: 'Profiles',
-            path: '/endpoint/autopilot/list-profiles',
+            title: 'Enrollment Profiles',
+            path: '/endpoint/autopilot/enrollment-profiles',
             permissions: ['Endpoint.Autopilot.*'],
           },
           {
@@ -1112,6 +1183,13 @@ export const nativeMenuItems = [
           {
             title: 'Container Logs',
             path: '/cipp/advanced/container-logs',
+            roles: ['superadmin'],
+            permissions: ['CIPP.SuperAdmin.*'],
+            scope: 'global',
+          },
+          {
+            title: 'Worker Health',
+            path: '/cipp/advanced/worker-health',
             roles: ['superadmin'],
             permissions: ['CIPP.SuperAdmin.*'],
             scope: 'global',
